@@ -52,7 +52,7 @@ public:
     void img_show(cv::Mat img, std::string name);
     void img_show_T(cv::Mat img, std::string name);
     //param for P, R, O, L net
-    std::vector<std::shared_ptr<Net>> nets_;
+    std::vector<std::shared_ptr<Net<float>>> nets_;
     std::vector<cv::Size> input_geometry_;
     int num_channels_;
 
@@ -70,10 +70,10 @@ public:
     std::vector<std::vector<cv::Point>> alignment_;
     std::vector<float> alignment_temp_;
     //paramter for the threshold
-    int minSize_ = 200;
+    int minSize_ = 50;
     float factor_ = 0.709;
-    float threshold_[3] = {0.5, 0.5, 0.3};
-    float threshold_NMS_ = 0.5;
+    float threshold_[3] = {0.6, 0.7, 0.8};
+    float threshold_NMS_ = 0.7;
 	std::vector<std::vector<string> > output_blob_names_ = {{"conv4-2", "prob1"}, 
 															{"conv5-2", "prob1"},
 															{"conv6-2", "conv6-3", "prob1"} };
